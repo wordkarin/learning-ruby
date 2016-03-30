@@ -37,6 +37,4 @@ else
     apologize(user_name)
 end
 
-
-
 #DONE!
