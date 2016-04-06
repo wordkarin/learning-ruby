@@ -5,8 +5,10 @@ class TestCat< Test::Unit::TestCase
 
     # Can we name cats?
     def test_naming()
-        cat = Cat.new("joe")
-        assert(cat.get_name, "joe")
+        joe = Cat.new("joe")
+        root = Cat.new("root")
+        assert(joe.get_name, "joe")
+        assert(root.get_name, "root")
     end
 
     # Verify that petting produces purring
