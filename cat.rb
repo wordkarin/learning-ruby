@@ -1,9 +1,16 @@
 
 class Cat
+  
+  # constants
+  @@EATS = ["fish", "milk", "cheese", "kibble"]
+  
+  # instance vars
+  @purr = false
+  
   def initialize(name)
     @name = name
-    @purr = false
   end
+  
   def get_name
     return @name
   end
@@ -14,11 +21,9 @@ class Cat
 
   def pet
     @purr = true
-    return @purr
   end
 
   def will_eat(food)
-    eats = ["fish", "milk", "cheese", "kibble"]
-    return eats.include? food
+    return @@eats.include? food
   end
 end
