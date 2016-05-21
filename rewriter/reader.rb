@@ -2,6 +2,9 @@
 
 load 'words.rb'
 
+#TODO There is control flow and functions just smeared together, let's clean 'em
+#up
+
 # Setup
 wordList = Words.new("data/words.tsv")
 starting_text = ""
@@ -24,9 +27,23 @@ def smurf(word, wordList)
   return word
 end
 
-result = ""
+def chef(word, wordLis)
+    vocab = ["hurdy", "burdy", "gurdy"]
+    if word.downcase == "the"
+        return "Bork!"
+    else
+        return vocab.sample
+    end
+end
+
+#TODO this copypasta is unacceptable!
 for word in words
-  result = result + smurf(word, wordList) + " "
+  print smurf(word, wordList) + " "
   #puts word + " -> " + (wordList.lookupPart(word) || "")
 end
- puts result
+puts ""
+for word in words
+  print chef(word, wordList) + " "
+  #puts word + " -> " + (wordList.lookupPart(word) || "")
+end
+puts ""
