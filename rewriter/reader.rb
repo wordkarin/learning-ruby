@@ -28,7 +28,7 @@ def smurf(word, wordList)
 end
 
 def chef(word, wordLis)
-    vocab = ["hurdy", "burdy", "gurdy"]
+    vocab = ["hurdy", "burdy", "gurdy", "beddy-boo", "bools", "beency", "bowncy"]
     if word.downcase == "the"
         return "Bork!"
     else
