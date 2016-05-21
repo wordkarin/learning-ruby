@@ -18,13 +18,15 @@ end
 words = tokenize(starting_text)
 
 def smurf(word, wordList)
-  if wordList.lookupPart(word).strip == "n"
+  if wordList.lookupPart(word) == "n"
     then word = "smurf"
   end
   return word
 end
 
+result = ""
 for word in words
-  puts smurf(word, wordList)
-  puts word + " -> " + (wordList.lookupPart(word) || "")
+  result = result + smurf(word, wordList) + " "
+  #puts word + " -> " + (wordList.lookupPart(word) || "")
 end
+ puts result
