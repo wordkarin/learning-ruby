@@ -15,35 +15,55 @@ end
 
 #TODO update tokenize to separate punctuation into its own element
 def tokenize(text)
-  word_array = text.split
+  return text.split
 end
 
 words = tokenize(starting_text)
 
 def smurf(word, wordList)
-  if wordList.lookupPart(word) == "n"
-    then word = "smurf"
+  if wordList.lookupPart(word) == "noun"
+    word = "smurf"
+  elsif wordList.lookupPart(word) == "pnoun"
+    word = "smurfs"
   end
   return word
 end
 
-def chef(word, wordLis)
-    vocab = ["hurdy", "burdy", "gurdy", "beddy-boo", "bools", "beency", "bowncy"]
-    if word.downcase == "the"
-        return "Bork!"
-    else
-        return vocab.sample
+def chef(word, wordList)
+    noun = ["beddy-boo", "bool", "beence", "bownd"]
+    verb = ["bork", "smork"]
+    adjective = ["hurdy", "burdy", "gurdy"]
+    part = wordList.lookupPart(word)
+  
+    if part == "noun"
+        return noun.sample
+    elsif part == "pnoun"
+        return noun.sample + "s"
+    elsif part == "verb"
+        return verb.sample
+    elsif part == "adj"
+        return adjective.sample
+    elsif part == "prep"
+        return word
+    elsif part == "art"
+        return "da"
+    else 
+        return word
     end
 end
 
 #TODO this copypasta is unacceptable!
 for word in words
-  print smurf(word, wordList) + " "
-  #puts word + " -> " + (wordList.lookupPart(word) || "")
+  print word + "(" + (wordList.lookupPart(word) || "") + ") "
 end
+puts ""
+puts ""
+for word in words
+  print smurf(word, wordList) + " "
+end
+puts ""
 puts ""
 for word in words
   print chef(word, wordList) + " "
-  #puts word + " -> " + (wordList.lookupPart(word) || "")
 end
 puts ""
