@@ -10,12 +10,21 @@ while text = gets
   starting_text = starting_text + text
 end
 
+#TODO update tokenize to separate punctuation into its own element
 def tokenize(text)
-  word_array = []
   word_array = text.split
 end
 
 words = tokenize(starting_text)
+
+def smurf(word, wordList)
+  if wordList.lookupPart(word).strip == "n"
+    then word = "smurf"
+  end
+  return word
+end
+
 for word in words
-    puts word + " -> " + (wordList.lookupPart(word) || "")
+  puts smurf(word, wordList)
+  puts word + " -> " + (wordList.lookupPart(word) || "")
 end
