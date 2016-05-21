@@ -1,5 +1,9 @@
 #this is a program that will take input, store that input as a variable, and print it back to the console
-puts "enter some text please."
+
+load 'words.rb'
+
+# Setup
+wordList = Words.new("data/words.tsv")
 starting_text = ""
 
 while text = gets
@@ -11,4 +15,7 @@ def tokenize(text)
   word_array = text.split
 end
 
-puts tokenize(starting_text)
+words = tokenize(starting_text)
+for word in words
+    puts word + " -> " + (wordList.lookupPart(word) || "")
+end
