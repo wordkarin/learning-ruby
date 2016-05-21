@@ -13,7 +13,7 @@ class Words
     end
 
     def lookupPart(word)
-        return @partsByWord[word.downcase]
+        return @partsByWord[word.downcase] || ""
     end
 
 end
