@@ -10,5 +10,5 @@ def tokenize(text)
   word_array = []
   word_array = text.split
 end
-,
+
 puts tokenize(starting_text)
