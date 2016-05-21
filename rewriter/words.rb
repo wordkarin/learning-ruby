@@ -4,6 +4,7 @@ class Words
         @partsByWord = {}
         File.open(wordsFile, "r") do |f|
             f.each_line do |line|
+                line = line.chomp
 
                 (word, part) = line.split("\t")
                 @partsByWord[word.downcase] = part.downcase
