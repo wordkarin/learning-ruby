@@ -1,7 +1,6 @@
 
-require_relative 'cache'
-
 require "test/unit"
+require_relative "cache"
 
 class TestCache< Test::Unit::TestCase
 
@@ -22,9 +21,9 @@ class TestCache< Test::Unit::TestCase
         assert(cache.size() == 5)
         assert(cache.get(1) == 1)
 
-        (1..1000000).each do |x| cache.put(x, x) end
-        assert(cache.size() ==100)
-        assert(cache.get(1), nil)
+        (1..10000).each do |x| cache.put(x, x) end
+        assert(cache.size() == 100)
+        assert(cache.get(1) == nil)
     end
 
     def test_lru()
@@ -36,8 +35,8 @@ class TestCache< Test::Unit::TestCase
             cache.put(x, x) 
         end
 
-        assert(cache.get(5), 5)
-        assert(cache.get(6), nil)
+        assert(cache.get(5) == 5)
+        assert(cache.get(6) == nil)
 
     end
 
