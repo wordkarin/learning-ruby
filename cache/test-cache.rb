@@ -31,9 +31,9 @@ class TestCache< Test::Unit::TestCase
         cache = Cache.new(10)
         (1..10).each do |x| cache.put(x, x) end
 
-        (11..200).each do |x| 
+        (11..200).each do |x|
             cache.get(5)
-            cache.put(x, x) 
+            cache.put(x, x)
         end
 
         assert(cache.get(5), 5)
