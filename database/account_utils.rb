@@ -44,7 +44,7 @@ def run_simulation(name1, name2)
       transfer(name1, name2, 2)
     end
     #transfer(name2, name1, 3)
-    10.times do 
+    10.times do
       transfer(name1, name2, 2)
     end
 
@@ -52,7 +52,7 @@ end
 
 puts get_total_balance(['karin', 'miles'])
 num = 10
-num.times do 
+num.times do
     fork {run_simulation("karin", "miles")}
 end
 ts = (1..num).map {Thread.new{run_simulation("karin", "miles")}}
