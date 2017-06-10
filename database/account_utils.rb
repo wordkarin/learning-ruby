@@ -21,15 +21,17 @@ def transfer(name1, name2, amount)
     db.exec_params('UPDATE account SET balance = $1 WHERE name =$2', [balance1 - amount,name1])
     db.exec_params('UPDATE account SET balance = $1 WHERE name =$2', [balance2 + amount, name2])
   end
+  db.close
 end
 
 def run_simulation(name1, name2)
-  puts get_total_balance(['karin', 'miles'])
-  transfer(name1, name2, 20)
-  puts get_total_balance(['karin', 'miles'])
-  puts get_total_balance(['karin'])
-  puts get_total_balance(['miles'])
+    100.times do 
+      transfer(name1, name2, 2)
+      transfer(name2, name1, 3)
+    end
 end
 
-t1 = Thread.new{run_simulation("karin", "miles")}
-t1.join
+puts get_total_balance(['karin', 'miles'])
+threads = (1..10).map {Thread.new{run_simulation("karin", "miles")}}
+threads.each {|t| t.join}
+puts get_total_balance(['karin', 'miles'])
